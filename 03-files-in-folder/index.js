@@ -12,7 +12,7 @@ const path = require('path');
 
     const fileStats = await stat(filePath);
 
-    const fileExt = path.extname(dirEntry.name);
+    const fileExt = path.extname(dirEntry.name).replace('.', '');
     const fileBaseName = path.basename(filePath, fileExt);
     const fileSize = (fileStats.size / 1024).toFixed(3) + 'kb';
 
