@@ -1,7 +1,6 @@
-const process = require('process');
-const { stdin, stdout } = process;
 const { createWriteStream } = require('fs');
 const { join } = require('path');
+const { stdin, stdout } = process;
 
 const filePath = join(__dirname, 'text.txt');
 const writeStream = createWriteStream(filePath);

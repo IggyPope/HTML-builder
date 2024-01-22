@@ -3,6 +3,11 @@ const { pipeline } = require('stream/promises');
 const { createReadStream, createWriteStream } = require('fs');
 const { join, extname } = require('path');
 
+const srcDirPath = join(__dirname, 'styles');
+const destFilePath = join(__dirname, 'project-dist', 'bundle.css');
+
+mergeStyles(srcDirPath, destFilePath);
+
 async function mergeStyles(srcDirPath, destFilePath) {
   const writeStream = createWriteStream(destFilePath);
 
@@ -22,8 +27,3 @@ async function mergeStyles(srcDirPath, destFilePath) {
     await pipeline(readStream, writeStream, { end: false });
   }
 }
-
-const srcDirPath = join(__dirname, 'styles');
-const destFilePath = join(__dirname, 'project-dist', 'bundle.css');
-
-mergeStyles(srcDirPath, destFilePath).catch(console.error);
